@@ -1,13 +1,17 @@
 import React from "react";
 import { FormContainer } from "../components/form-container";
 import { InputField } from "../components/input-field";
-
-const handleLogin = (event) => {
-  event.preventDefault();
-  console.log(event);
-};
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log(event);
+    navigate("/chat");
+  };
+
   return (
     <FormContainer>
       <form onSubmit={handleLogin} className="flex flex-col gap-4 p-8">
