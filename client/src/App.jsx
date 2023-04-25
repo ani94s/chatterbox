@@ -12,12 +12,12 @@ function App() {
         <Routes>
           <Route
             exact
-            path="/"
-            element={<Navigate to="/register" replace={true} />}
+            path="/chatterbox/"
+            element={<Navigate to="/chatterbox/register" replace={true} />}
           />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chatterbox/register" element={<Register />} />
+          <Route path="/chatterbox/login" element={<Login />} />
+          <Route path="/chatterbox/chat" element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </div>

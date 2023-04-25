@@ -46,7 +46,7 @@ export const Register = () => {
     event.preventDefault();
     console.log(formValues);
     if (handleValidation()) {
-      navigate("/login");
+      navigate("/chatterbox/login");
     }
   };
 
