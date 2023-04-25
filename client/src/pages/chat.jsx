@@ -85,13 +85,13 @@ const userList = [
   {
     id: "ja1234",
     firstName: "John Biggest Name",
-    lastName: "Andrew",
+    lastName: "Andrew Genner",
     avatarImg: "",
     nickName: "",
   },
 ];
 
-const messages = [
+const initMessages = [
   {
     id: "123",
     content: "Typical Reply with anger",
@@ -160,16 +160,33 @@ const messages = [
 
 export const Chat = () => {
   const [selectedUser, setSelectedUser] = useState(userList[0]);
+  const [messages, setMessages] = useState(initMessages);
 
   const onUserSelect = (user) => {
     setSelectedUser(user);
   };
+
+  console.log("Messages", messages);
+
+  const handleSendMessage = (text) => {
+    if (text) {
+      const newMsg = {
+        id: messages[0].id + 1,
+        content: text,
+        msgFrom: "as123",
+        myMessage: true,
+        timestamp: "",
+      };
+      setMessages([newMsg, ...messages]);
+    }
+  };
+
   return (
     <div className="overflow-hidden w-full h-full relative">
       <div id="chatscreen" className="flex flex-row w-full h-full">
         <div
           id="userlist"
-          className="sm:w-96 w-full h-full flex flex-col border-r border-r-secondary"
+          className="md:w-96 sm:w-80 w-full h-full flex flex-col border-r border-r-secondary"
         >
           <Navbar />
           <div className="w-full h-full overflow-y-scroll flex flex-col ">
@@ -189,7 +206,11 @@ export const Chat = () => {
           id="userchat"
           className="overflow-y-scroll w-full sm:flex flex-col hidden h-full"
         >
-          <MessageContainer messages={messages} user={selectedUser} />
+          <MessageContainer
+            messages={messages}
+            user={selectedUser}
+            sendMessage={handleSendMessage}
+          />
         </div>
       </div>
     </div>

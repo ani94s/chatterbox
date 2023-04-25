@@ -24,7 +24,7 @@ const Message = ({ messageContent, userName, myMessage }) => {
 
 Message.propTypes = {
   messageContent: PropTypes.string,
-  userName: PropTypes.object,
+  userName: PropTypes.string,
   timestamp: PropTypes.string,
   myMessage: PropTypes.bool,
 };

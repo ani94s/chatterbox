@@ -16,14 +16,14 @@ export const Login = () => {
     <FormContainer>
       <form onSubmit={handleLogin} className="flex flex-col gap-4 p-8">
         <InputField
-          id="userid"
+          name="userid"
           placeholder="Email/User ID"
           type="text"
           label="Email ID/User ID"
           className="w-60"
         />
         <InputField
-          id="password"
+          name="password"
           placeholder="Password"
           type="password"
           label="Password"
