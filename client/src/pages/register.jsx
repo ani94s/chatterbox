@@ -110,7 +110,7 @@ export const Register = () => {
             <p className="">
               Already signed in?{" "}
               <span className="text-blue-600 underline">
-                <Link to="../login">Login</Link>
+                <Link to="/chatterbox/login">Login</Link>
               </span>
             </p>
           </div>
