@@ -9,7 +9,7 @@ export const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     console.log(event);
-    navigate("/chat");
+    navigate("/chatterbox/chat");
   };
 
   return (

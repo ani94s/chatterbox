@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route
             exact
-            path="/chatterbox/"
+            path="/chatterbox"
             element={<Navigate to="/chatterbox/register" replace={true} />}
           />
           <Route path="/chatterbox/register" element={<Register />} />
