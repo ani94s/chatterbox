@@ -11,7 +11,7 @@ export const InputField = ({
   onChange,
 }) => {
   return (
-    <div className={`${inline ? "inline" : "flex"} flex-col`}>
+    <div className={`${inline ? "inline" : "flex"} flex-col w-full`}>
       <label htmlFor={name}>{label}</label>
       <input
         name={name}
