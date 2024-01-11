@@ -1,95 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import MessageContainer from "../components/message-container";
 import Navbar from "../components/navbar";
 import UserProfileRow from "../components/user-profile-row";
-
-const userList = [
-  {
-    id: "as123",
-    firstName: "Anirudhan",
-    lastName: "Srisudhan",
-    avatarImg: "",
-    nickName: "Ani",
-  },
-  {
-    id: "av123",
-    firstName: "Ashwath",
-    lastName: "Vijayan",
-    avatarImg: "",
-    nickName: "Ash",
-  },
-  {
-    id: "ps123",
-    firstName: "Pooja",
-    lastName: "Sivaraja",
-    avatarImg: "",
-    nickName: "Pooja",
-  },
-  {
-    id: "tb23",
-    firstName: "Tamanna",
-    lastName: "Bhatia",
-    avatarImg: "",
-    nickName: "Tammu",
-  },
-  {
-    id: "vj123",
-    firstName: "Vijay",
-    lastName: "Kumar",
-    avatarImg: "",
-    nickName: "Vj",
-  },
-  {
-    id: "f1l1",
-    firstName: "First1",
-    lastName: "Last1",
-    avatarImg: "",
-    nickName: "",
-  },
-  {
-    id: "rr11",
-    firstName: "Rampwalk",
-    lastName: "Remo",
-    avatarImg: "",
-    nickName: "",
-  },
-  {
-    id: "nan99",
-    firstName: "Nandhini",
-    lastName: "Anniyan",
-    avatarImg: "",
-    nickName: "Nandy",
-  },
-  {
-    id: "dsss",
-    firstName: "Divya",
-    lastName: "Spandana",
-    avatarImg: "",
-    nickName: "",
-  },
-  {
-    id: "kagar",
-    firstName: "Kajal",
-    lastName: "Agarwal",
-    avatarImg: "",
-    nickName: "",
-  },
-  {
-    id: "vd24",
-    firstName: "Vishal",
-    lastName: "Dhadlani",
-    avatarImg: "",
-    nickName: "",
-  },
-  {
-    id: "ja1234",
-    firstName: "John Biggest Name",
-    lastName: "Andrew Genner",
-    avatarImg: "",
-    nickName: "",
-  },
-];
+import axios from "axios";
 
 const initMessages = [
   {
@@ -159,14 +74,24 @@ const initMessages = [
 ];
 
 export const Chat = () => {
-  const [selectedUser, setSelectedUser] = useState(userList[0]);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState();
   const [messages, setMessages] = useState(initMessages);
+
+  const fetchUsers = async () => {
+    const { data } = await axios.get("/api/users");
+    setUsers(data);
+    setSelectedUser(data[0]);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   const onUserSelect = (user) => {
     setSelectedUser(user);
   };
-
-  console.log("Messages", messages);
 
   const handleSendMessage = (text) => {
     if (text) {
@@ -182,7 +107,7 @@ export const Chat = () => {
   };
 
   return (
-    <div className="overflow-hidden w-full h-full relative">
+    <div className="overflow-hidden w-full h-full relative bg">
       <div id="chatscreen" className="flex flex-row w-full h-full">
         <div
           id="userlist"
@@ -190,10 +115,10 @@ export const Chat = () => {
         >
           <Navbar />
           <div className="w-full h-full overflow-y-scroll flex flex-col ">
-            {userList.map((user, index) => {
+            {users.map((user, index) => {
               return (
                 <UserProfileRow
-                  key={index}
+                  key={user.id}
                   user={user}
                   onUserSelect={onUserSelect}
                   selected={user.id === selectedUser.id}
@@ -206,11 +131,13 @@ export const Chat = () => {
           id="userchat"
           className="overflow-y-scroll w-full sm:flex flex-col hidden h-full"
         >
-          <MessageContainer
-            messages={messages}
-            user={selectedUser}
-            sendMessage={handleSendMessage}
-          />
+          {selectedUser && (
+            <MessageContainer
+              messages={messages}
+              user={selectedUser}
+              sendMessage={handleSendMessage}
+            />
+          )}
         </div>
       </div>
     </div>

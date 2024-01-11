@@ -5,8 +5,9 @@ import Avatar from "./avatar";
 const UserProfileRow = ({ user, onUserSelect, selected = false }) => {
   return (
     <button
+      key={user.id}
       className={`flex flex-row justify-start gap-2 items-center p-2 border ${
-        selected ? "bg-slate-300" : "bg-inherit hover:bg-slate-200"
+        selected ? "bg-slate-300" : "bg-secondary hover:bg-slate-200"
       }`}
       onClick={() => onUserSelect(user)}
     >

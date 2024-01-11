@@ -14,20 +14,18 @@ export const Login = () => {
 
   return (
     <FormContainer>
-      <form onSubmit={handleLogin} className="flex flex-col gap-4 p-8">
+      <form onSubmit={handleLogin} className="flex flex-col w-full gap-4 p-8">
         <InputField
           name="userid"
           placeholder="Email/User ID"
           type="text"
           label="Email ID/User ID"
-          className="w-60"
         />
         <InputField
           name="password"
           placeholder="Password"
           type="password"
           label="Password"
-          className="w-60"
         />
         <button type="submit" className="p-4 border bg-secondary">
           Login

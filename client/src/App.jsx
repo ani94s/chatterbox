@@ -7,7 +7,7 @@ import { Chat } from "./pages/chat";
 
 function App() {
   return (
-    <div className="max-h-screen h-screen flex flex-col">
+    <div className="max-h-screen h-screen flex flex-col bg-home-screen bg-cover bg-center">
       <BrowserRouter>
         <Routes>
           <Route

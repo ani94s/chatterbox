@@ -59,8 +59,16 @@ export const Register = () => {
       <FormContainer>
         <form
           onSubmit={handleRegister}
-          className="flex flex-col gap-4 p-8 justify-center"
+          className="flex flex-col w-full gap-4 p-8 justify-center"
         >
+          <InputField
+            name="fullname"
+            placeholder="Full Name"
+            type="text"
+            label="Name"
+            className="w-60 sm:w-auto"
+            onChange={handleChange}
+          />
           <InputField
             name="emailid"
             placeholder="Email ID"
@@ -70,39 +78,19 @@ export const Register = () => {
             onChange={handleChange}
           />
           <InputField
-            name="userid"
-            placeholder="User ID"
-            type="text"
-            label="User ID"
-            className="w-60 sm:w-auto"
+            name="password"
+            placeholder="Password"
+            type="password"
+            label="Password"
             onChange={handleChange}
           />
           <InputField
-            name="fullname"
-            placeholder="Full Name"
-            type="text"
-            label="Full Name"
-            className="w-60 sm:w-auto"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            type="password"
+            label="Confirm Password"
             onChange={handleChange}
           />
-          <div className="flex flex-col sm:flex-row gap-4">
-            <InputField
-              name="password"
-              placeholder="Password"
-              type="password"
-              label="Password"
-              className="w-60 sm:w-auto"
-              onChange={handleChange}
-            />
-            <InputField
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              type="password"
-              label="Confirm Password"
-              className="w-60 sm:w-auto"
-              onChange={handleChange}
-            />
-          </div>
           <button type="submit" className="p-4 border bg-secondary">
             Register
           </button>
